@@ -2,11 +2,14 @@
 Perry Kwesi Portfolio — Flask application.
 
 A modern developer portfolio and AI laboratory.
-Serves the single-page portfolio UI and provides REST endpoints
-for the chat demo and the contact form.
+Serves the single-page portfolio UI, the project gallery page, and provides
+REST endpoints for chat, contact, and GitHub activity.
 """
 
+import json
 import os
+import urllib.error
+import urllib.request
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
@@ -17,12 +20,71 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
 
 AI_API_KEY = os.environ.get("AI_API_KEY", "")
+GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME", "")
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+
+GALLERY_PROJECTS = [
+    {
+        "title": "AI Chat Assistant",
+        "description": "A conversational assistant powered by an LLM API, with streaming responses and context handling.",
+        "image": "project-chat.svg",
+        "tags": ["Python", "Flask", "LLM"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+    {
+        "title": "Data Dashboard",
+        "description": "An interactive dashboard visualising datasets with filtering, sorting, and export options.",
+        "image": "project-dashboard.svg",
+        "tags": ["JavaScript", "Charts", "Data"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+    {
+        "title": "Automation Toolkit",
+        "description": "A collection of scripts automating repetitive workflows, from deployments to data pipelines.",
+        "image": "project-automation.svg",
+        "tags": ["Python", "Bash", "DevOps"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+    {
+        "title": "Sentiment Analyzer",
+        "description": "A tool that classifies text sentiment using NLP, with a clean web interface for batch analysis.",
+        "image": "project-sentiment.svg",
+        "tags": ["NLP", "Python", "ML"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+    {
+        "title": "Task Manager API",
+        "description": "A RESTful task management API with authentication, CRUD operations, and task prioritisation.",
+        "image": "project-taskapi.svg",
+        "tags": ["Flask", "REST", "Auth"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+    {
+        "title": "Portfolio Website",
+        "description": "This very site — a Flask-powered portfolio with dark/light themes, scroll reveals, and an AI lab.",
+        "image": "project-portfolio.svg",
+        "tags": ["Flask", "CSS", "Responsive"],
+        "demo_url": "#",
+        "code_url": "#",
+    },
+]
 
 
 @app.route("/")
 def index():
     """Serve the single-page portfolio."""
     return render_template("index.html")
+
+
+@app.route("/gallery")
+def gallery():
+    """Serve the project gallery page."""
+    return render_template("gallery.html", projects=GALLERY_PROJECTS)
 
 
 @app.route("/api/chat", methods=["POST"])
@@ -86,6 +148,65 @@ def contact():
     # --------------------------------------------------------
 
     return jsonify({"success": True, "message": "Thanks! I'll get back to you soon."})
+
+
+def _github_request(url):
+    """Make an authenticated GitHub API request. Returns parsed JSON or None."""
+    req = urllib.request.Request(url)
+    req.add_header("Accept", "application/vnd.github+json")
+    if GITHUB_TOKEN:
+        req.add_header("Authorization", f"Bearer {GITHUB_TOKEN}")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return json.loads(resp.read().decode())
+    except (urllib.error.URLError, urllib.error.HTTPError, ValueError):
+        return None
+
+
+@app.route("/api/github/repos")
+def github_repos():
+    """Fetch the user's public repositories sorted by last updated."""
+    if not GITHUB_USERNAME:
+        return jsonify({"error": "GitHub username not configured.", "repos": []})
+    data = _github_request(
+        f"https://api.github.com/users/{GITHUB_USERNAME}/repos?sort=updated&per_page=6"
+    )
+    if data is None:
+        return jsonify({"error": "Failed to fetch repositories.", "repos": []})
+    repos = [
+        {
+            "name": r.get("name", ""),
+            "description": r.get("description") or "No description provided.",
+            "url": r.get("html_url", "#"),
+            "stars": r.get("stargazers_count", 0),
+            "language": r.get("language") or "Unknown",
+            "updated": r.get("updated_at", "")[:10],
+        }
+        for r in data
+        if not r.get("fork")
+    ]
+    return jsonify({"repos": repos})
+
+
+@app.route("/api/github/activity")
+def github_activity():
+    """Fetch the user's recent public events."""
+    if not GITHUB_USERNAME:
+        return jsonify({"error": "GitHub username not configured.", "events": []})
+    data = _github_request(
+        f"https://api.github.com/users/{GITHUB_USERNAME}/events?per_page=8"
+    )
+    if data is None:
+        return jsonify({"error": "Failed to fetch activity.", "events": []})
+    events = [
+        {
+            "type": e.get("type", "").replace("Event", ""),
+            "repo": e.get("repo", {}).get("name", ""),
+            "created": e.get("created_at", "")[:10],
+        }
+        for e in data
+    ]
+    return jsonify({"events": events})
 
 
 if __name__ == "__main__":

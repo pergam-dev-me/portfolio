@@ -11,6 +11,7 @@ services:
     environment:
       - FLASK_ENV=development
       - PYTHONUNBUFFERED=1
+      - GITHUB_USERNAME=${GITHUB_USERNAME:-}
     command: ["sh", "-ec", "pip install --quiet --no-cache-dir -r requirements.txt && exec python app.py"]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/')"]
