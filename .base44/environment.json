@@ -1,0 +1,12 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "AI_API_KEY",
+      "description": "Optional. API key for the AI provider used by the /api/chat endpoint. Without it, the endpoint returns a safe demo response. Obtain from your AI provider dashboard.",
+      "requiredAtBoot": false
+    }
+  ]
+}
