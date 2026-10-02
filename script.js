@@ -129,3 +129,21 @@ function initContact() {
 renderLayout();
 document.querySelectorAll('[data-shield]').forEach((el) => (el.innerHTML = shield('lg')));
 initScroll(); initTyped(); initFilters(); initToggle(); initContact();
+
+// Interactive skills grid
+(function () {
+  const grid = document.querySelector('.skill-grid'); if (!grid) return;
+  const box = document.querySelector('.skill-detail');
+  const pick = (t) => {
+    grid.querySelectorAll('.skill-tile').forEach((x) => x.classList.toggle('on', x === t));
+    box.querySelector('h3').textContent = t.dataset.title;
+    box.querySelector('p').textContent = t.dataset.desc;
+    document.getElementById('skill-bar').style.width = t.dataset.level + '%';
+    document.getElementById('skill-pct').textContent = 'Proficiency: ' + t.dataset.level + '%';
+  };
+  grid.addEventListener('click', (e) => { const t = e.target.closest('.skill-tile'); if (t) pick(t); });
+  pick(grid.firstElementChild);
+})();
+
+// Project cards: show description on thumbnail hover
+document.querySelectorAll('#grid .card').forEach((c) => (c.querySelector('.thumb').dataset.more = c.dataset.desc));

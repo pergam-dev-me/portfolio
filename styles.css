@@ -172,3 +172,20 @@ footer.site p { font-size:1rem; }
   nav.main.open { display:flex; }
 }
 @media (prefers-reduced-motion:reduce) { *, *::before { animation:none !important; transition:none !important; } .reveal { opacity:1; transform:none; } html { scroll-behavior:auto; } }
+
+/* skill grid */
+.skill-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1.2rem; }
+.skill-tile { display:grid; justify-items:center; gap:.6rem; padding:1.4rem 1rem; border-radius:16px; cursor:pointer; color:#fff; font:600 1rem var(--sans); background:var(--glass); border:1px solid rgba(167,139,250,.25); backdrop-filter:blur(16px); transition:.3s; }
+.skill-tile i { font-size:2rem; color:var(--blue2); transition:.3s; }
+.skill-tile:hover { transform:translateY(-4px); border-color:var(--violet); }
+.skill-tile:hover i { animation:bob 1s ease-in-out infinite; }
+.skill-tile.on { background:linear-gradient(135deg,rgba(74,144,226,.4),rgba(91,33,182,.5)); border-color:var(--violet); box-shadow:0 0 25px rgba(167,139,250,.35); }
+.skill-detail { margin-top:2rem; max-width:700px; margin-inline:auto; text-align:center; }
+
+/* featured projects + hover description */
+.card[data-featured]::before { content:"★ Featured"; position:absolute; z-index:2; top:1rem; left:1rem; padding:.2rem .8rem; border-radius:99px; font-size:.9rem; font-weight:600; background:linear-gradient(135deg,var(--blue),var(--deep-violet)); }
+.card .thumb { position:relative; }
+.card .thumb::after { content:attr(data-more); position:absolute; inset:0; display:grid; place-items:center; padding:1.5rem; text-align:center; font-size:1rem; background:rgba(11,25,44,.82); opacity:0; transition:opacity .4s; }
+.card:hover .thumb::after { opacity:1; }
+.card { transition:transform .4s, box-shadow .4s, border-color .4s; }
+.card:hover { transform:translateY(-6px); border-color:var(--violet); box-shadow:0 14px 44px rgba(91,33,182,.35); }
