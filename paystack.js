@@ -2,6 +2,7 @@
 const PAYSTACK_PUBLIC_KEY = 'pk_test_a01b96bea999ef8b6187fc729866bec2d3baf11e'; // Test public key — swap for pk_live_… in production
 const FLUTTERWAVE_PUBLIC_KEY = 'FLWPUBK-xxxxxxxxxxxxxxxx-X'; // Replace
 const PAYPAL_ME = 'https://www.paypal.me/perrygakpe'; // Replace
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_51ULyTuDBZybyYRMUpWUPmSx2m3VarT14ythEFAKVp0dm55G34TpDVCBiPOZvhwrVJvLhKkwXaz8diUtYmxSt62EN00dDt892UV'; // test publishable key (safe in client code); used once a backend creates Checkout Sessions
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/your_link'; // Replace
 
 const donate = { amount: 50, currency: 'GHS', gateway: 'paystack' };
