@@ -38,11 +38,18 @@ function buildDonateModal() {
   </div>`);
   const modal = document.getElementById('donate-modal');
   const amt = document.getElementById('d-amt'), cur = document.getElementById('d-cur'), msg = document.getElementById('d-msg');
+  const title = modal.querySelector('h2');
   const names = { paystack: 'Paystack', flutterwave: 'Flutterwave', paypal: 'PayPal', stripe: 'Stripe' };
   const show = (t) => { msg.textContent = t; msg.classList.add('show'); };
   window.donateMessage = show;
 
   document.addEventListener('click', (e) => {
+    const pay = e.target.closest('[data-pay]');
+    if (pay) { // service payment: prefill from the tier card
+      const card = pay.closest('.glass');
+      amt.value = parseInt(card.querySelector('.price').textContent.replace(/\D/g, ''), 10); cur.value = 'USD';
+      title.textContent = 'Pay for ' + card.querySelector('h3').textContent + ' package';
+    } else if (e.target.closest('[data-donate]')) title.textContent = 'Support Perry';
     if (e.target.closest('[data-donate]')) { modal.classList.add('open'); document.querySelector('nav.main')?.classList.remove('open'); }
     if (e.target === modal || e.target.closest('#donate-modal .close')) modal.classList.remove('open');
   });

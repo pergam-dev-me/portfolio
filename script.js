@@ -115,7 +115,7 @@ function initContact() {
     const body = `${d.get('message')}\n\n— ${d.get('name')} (${d.get('email')})`;
     const msg = form.querySelector('.msg');
     msg.textContent = 'Thank you! Opening your email app to send the message…'; msg.classList.add('show');
-    location.href = `mailto:perrygakpe@example.com?subject=${encodeURIComponent(d.get('subject') || 'Portfolio enquiry')}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:perrykwesi123@gmail.com?subject=${encodeURIComponent(d.get('subject') || 'Portfolio enquiry')}&body=${encodeURIComponent(body)}`;
     form.reset();
   });
   const slots = document.querySelector('.cal-wrap'), out = document.getElementById('booking-out');
