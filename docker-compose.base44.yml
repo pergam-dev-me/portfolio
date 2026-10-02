@@ -1,0 +1,22 @@
+services:
+  web:
+    image: python:3.12-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:5000"
+    env_file:
+      - /run/base44/app.env
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+      - GITHUB_USERNAME=${GITHUB_USERNAME:-}
+    command: ["sh", "-ec", "pip install --quiet --no-cache-dir -r requirements.txt && exec python app.py"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
