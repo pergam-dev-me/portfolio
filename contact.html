@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Perry Gakpe</title>
+<meta name="description" content="Contact Perry Gakpe, book a call, and support the work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<section class="page-head"><div class="container reveal"><span class="eyebrow">Contact & support</span><h1>Let's talk</h1></div></section>
+<section style="padding-top:2rem"><div class="container split">
+  <div class="glass reveal"><h3>Send a message</h3>
+  <form id="contact-form" style="margin-top:1rem">
+    <label>Name<input name="name" required autocomplete="name"></label>
+    <label>Email<input type="email" name="email" required autocomplete="email"></label>
+    <label>Subject<input name="subject"></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button class="btn solid" type="submit"><i class="ri-send-plane-fill"></i> Send message</button>
+    <div class="msg" role="status"></div>
+  </form></div>
+  <div style="display:grid;gap:2rem">
+    <div class="glass reveal"><h3>Connect</h3><p>perrygakpe@example.com</p>
+      <div class="socials"><a href="#" aria-label="GitHub"><i class="ri-github-fill"></i></a><a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a><a href="#" aria-label="X"><i class="ri-twitter-x-fill"></i></a><a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-fill"></i></a></div></div>
+    <div class="glass reveal"><h3>Book a call</h3><p>Pick a 30-minute slot.</p>
+      <div class="cal-wrap"><button data-slot="Mon 10:00">Mon 10:00</button><button data-slot="Tue 14:00">Tue 14:00</button><button data-slot="Wed 11:00">Wed 11:00</button><button data-slot="Thu 16:00">Thu 16:00</button><button data-slot="Fri 09:00">Fri 09:00</button><button data-slot="Fri 15:00">Fri 15:00</button></div>
+      <div class="msg" id="booking-out" role="status"></div>
+      <p class="note">Swap this for a Calendly or Cal.com embed when you have one.</p></div>
+  </div>
+</div></section>
+<section><div class="container"><div class="glass honor reveal scale">
+  <span class="eyebrow">Donate & support</span><h2>The Honor Card</h2>
+  <p class="lead">If my work has helped you, consider supporting it. Pay via Paystack, Flutterwave, PayPal or Stripe — anywhere in the world.</p>
+  <div class="cta-row"><button class="btn-donate big" id="donate-button" data-donate><span><i class="ri-heart-3-fill"></i> Imperial Donate</span></button></div>
+</div></div></section>
+</main>
+<script src="script.js"></script>
+<script src="paystack.js"></script>
+</body>
+</html>

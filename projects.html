@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Perry Gakpe</title>
+<meta name="description" content="Filterable showcase of web, mobile, UI/UX and open-source projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<section class="page-head"><div class="container reveal"><span class="eyebrow">The vault</span><h1>Project showcase</h1>
+<p class="lead" style="margin-top:1rem">Work you can view and verify — live demos and source, one click away.</p></div></section>
+<section style="padding-top:2rem"><div class="container">
+<div class="filters reveal"><button class="on" data-f="all">All</button><button data-f="web">Web Apps</button><button data-f="mobile">Mobile</button><button data-f="ux">UI/UX</button><button data-f="oss">Open Source</button></div></div>
+<div class="container"><div class="grid" id="grid">
+<article class="card reveal" data-cat="web" data-desc="A headless storefront with sub-second loads and mobile-money checkout." data-stack="React,Node.js,PostgreSQL">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#1B365D,#4A90E2)"><i class="ri-shopping-bag-3-line"></i></div></div>
+  <div class="body"><span class="tag">Web App</span><h3>Aurora Commerce</h3><p>A headless storefront with sub-second loads and mobile-money checkout.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Aurora Commerce"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Aurora Commerce"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="web" data-desc="A dashboard turning complex data into calm, actionable views." data-stack="TypeScript,D3,Express">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#3B0764,#A78BFA)"><i class="ri-bar-chart-box-line"></i></div></div>
+  <div class="body"><span class="tag">Web App</span><h3>Atlas Analytics</h3><p>A dashboard turning complex data into calm, actionable views.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Atlas Analytics"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Atlas Analytics"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="mobile" data-desc="A mobile savings companion with real-time insights and offline support." data-stack="React Native,Firebase">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#0B192C,#5B21B6)"><i class="ri-smartphone-line"></i></div></div>
+  <div class="body"><span class="tag">Mobile</span><h3>Pulse Wallet</h3><p>A mobile savings companion with real-time insights and offline support.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Pulse Wallet"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Pulse Wallet"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="mobile" data-desc="Wellness tracking with gentle reminders and clear progress charts." data-stack="Flutter,SQLite">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#4A90E2,#3B0764)"><i class="ri-heart-pulse-line"></i></div></div>
+  <div class="body"><span class="tag">Mobile</span><h3>Vita Track</h3><p>Wellness tracking with gentle reminders and clear progress charts.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Vita Track"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Vita Track"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="ux" data-desc="A token-driven component library with glassmorphic surfaces." data-stack="Figma,Storybook,CSS">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#5B21B6,#6BA4E8)"><i class="ri-pen-nib-line"></i></div></div>
+  <div class="body"><span class="tag">UI/UX</span><h3>Sovereign Design System</h3><p>A token-driven component library with glassmorphic surfaces.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Sovereign Design System"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Sovereign Design System"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="ux" data-desc="A calm, accessible redesign of a banking onboarding flow." data-stack="Figma,Prototyping">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#1B365D,#C4B5FD)"><i class="ri-layout-masonry-line"></i></div></div>
+  <div class="body"><span class="tag">UI/UX</span><h3>Estate Banking Redesign</h3><p>A calm, accessible redesign of a banking onboarding flow.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Estate Banking Redesign"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Estate Banking Redesign"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="oss" data-desc="A scaffolding tool that bootstraps projects in seconds." data-stack="Node.js,TypeScript">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#0B192C,#4A90E2)"><i class="ri-git-branch-line"></i></div></div>
+  <div class="body"><span class="tag">Open Source</span><h3>Crest CLI</h3><p>A scaffolding tool that bootstraps projects in seconds.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of Crest CLI"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of Crest CLI"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+<article class="card reveal" data-cat="oss" data-desc="A tiny library unifying mobile-money payment APIs." data-stack="JavaScript,Jest">
+  <div class="thumb"><div style="--g:linear-gradient(135deg,#3B0764,#4A90E2)"><i class="ri-plug-line"></i></div></div>
+  <div class="body"><span class="tag">Open Source</span><h3>GhanaPay Kit</h3><p>A tiny library unifying mobile-money payment APIs.</p>
+  <div class="actions"><a class="btn" href="#" aria-label="Live demo of GhanaPay Kit"><i class="ri-external-link-line"></i> Live Demo</a><a class="btn" href="#" aria-label="Source of GhanaPay Kit"><i class="ri-code-s-slash-line"></i> View Source</a><button class="btn" data-details>Details</button></div></div>
+</article>
+</div></div></section>
+<div class="modal" id="project-modal" role="dialog" aria-modal="true"><div class="box"><button class="close" aria-label="Close">&times;</button>
+  <h3></h3><p class="desc" style="margin:.8rem 0 1.2rem"></p><div class="chips stack"></div>
+  <p class="note" style="margin-top:1.2rem">Live demo and source links are placeholders — point them to your real URLs.</p></div></div>
+</main>
+<script src="script.js"></script>
+<script src="paystack.js"></script>
+</body>
+</html>
