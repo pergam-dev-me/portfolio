@@ -1,5 +1,5 @@
 // Donate modal + multi-gateway logic (Paystack primary; Flutterwave, PayPal, Stripe extensions)
-const PAYSTACK_PUBLIC_KEY = 'pk_live_xxxxxxxxxxxxxxxxxxxx'; // Replace with actual key
+const PAYSTACK_PUBLIC_KEY = 'pk_test_a01b96bea999ef8b6187fc729866bec2d3baf11e'; // Test public key — swap for pk_live_… in production
 const FLUTTERWAVE_PUBLIC_KEY = 'FLWPUBK-xxxxxxxxxxxxxxxx-X'; // Replace
 const PAYPAL_ME = 'https://www.paypal.me/perrygakpe'; // Replace
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/your_link'; // Replace
