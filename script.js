@@ -27,7 +27,19 @@ function renderLayout() {
       </nav></div></header>`);
   document.body.insertAdjacentHTML('beforeend', `
     <footer class="site"><div class="container">
-      <p>© ${new Date().getFullYear()} Perry Gakpe · Heraldic Futurism · Built with care in Ghana</p>
+      <div class="footer-grid">
+        <div><h4>Quick Links</h4><ul>
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h4>Help</h4><ul>
+          <li><a href="#">FAQ</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li><li><a href="mailto:perrykwesi123@gmail.com">Support</a></li></ul></div>
+        <div><h4>Contact</h4><ul class="details">
+          <li><i class="ri-phone-line"></i> +233 00 000 0000</li>
+          <li><i class="ri-mail-line"></i> <a href="mailto:perrykwesi123@gmail.com">perrykwesi123@gmail.com</a></li>
+          <li><i class="ri-map-pin-line"></i> Accra, Ghana</li></ul>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a><a href="#" aria-label="X"><i class="ri-twitter-x-fill"></i></a><a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a><a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a><a href="#" aria-label="GitHub"><i class="ri-github-fill"></i></a></div></div>
+      </div>
+      <div class="footer-bottom"><p>Copyright © 2026 Perry Gakpe. All Rights Reserved.</p></div>
     </div></footer>`);
   const burger = document.querySelector('.burger'), nav = document.querySelector('nav.main');
   burger.addEventListener('click', () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
